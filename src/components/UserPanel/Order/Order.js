@@ -115,8 +115,8 @@ const Order = (props) => {
                                     }
                                     <br />
                                     <input onChange={upload} id="" placeholder="Upload file" type="file" name="myFile" />
-                                    {/* <div class="uploadBtn">
-                                        <i class="fas fa-cloud-upload-alt" style={{ color: 'green' }} aria-hidden="true"></i>
+                                    {/* <div className="uploadBtn">
+                                        <i className="fas fa-cloud-upload-alt" style={{ color: 'green' }} aria-hidden="true"></i>
                                         <span style={{ color: 'green' }}> Upload file </span>
                                         <div className="styleInput"><input type="file" /></div>
                                     </div> */}

@@ -1,3 +1,25 @@
 .gap{
     margin: 100px 0;
 }
+
+.provided-service-scroll-area{
+    height: 500px;
+    width: auto;
+    overflow: auto;
+}
+div::-webkit-scrollbar {
+    display: none;
+  }
+
+.service-info{
+    transition: transform .15s;
+}
+.service-info:hover{
+    /* box-shadow: 5px 5px 10px gray; */
+    -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+.card:hover{
+    box-shadow: 1px 8px 14px -2px grey
+}

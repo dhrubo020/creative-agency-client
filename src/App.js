@@ -2,7 +2,6 @@ import React, { createContext, useState } from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import AdminPanelLayOut from './components/AdminPanel/AdminPanelLayOut';
 import LandingPage from './components/AppLayOut/LandingPage/LandingPage';
 import Login from './components/Authentication/Login/Login';
 import UserPanelLayOut from './components/UserPanel/UserPanelLayOut';
@@ -16,28 +15,35 @@ import UserPrivateRoute from './components/Authentication/PrivateRoute/UserPriva
 export const UserContext = createContext();
 
 function App() {
+
     initializeFirebaseLogin()
-    const [loggedInUser, setLoggedInUser] = useState({}); //------- global logged in user
+
+    const [loggedInUser, setLoggedInUser] = useState({
+        isLogIn: false,
+        displayName: '',
+        photo: '',
+        email: ''
+    }); //------- global logged in user
 
 
-    const whoAreYou=(res)=>{
-        fetch(`http://localhost:3001/checkingWhoYouAre` , {
+    const whoAreYou = (res) => {
+        fetch(`http://localhost:3001/checkingWhoYouAre`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({email: res.email})
+            body: JSON.stringify({ email: res.email })
         })
             .then(res => res.json())
             .then(data => {
                 if (data.person === 'admin') {
                     res.access = 'admin';
                     window.alert("Welcome Mr. Admin")
-                }else{
+                } else {
                     res.access = 'user'
                 }
                 setLoggedInUser(res)
             })
     }
-    
+
     useEffect(() => {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -46,12 +52,14 @@ function App() {
                     email: user.email,
                     profilePhoto: user.photoURL
                 }
-                whoAreYou(userInfo)
+                if (userInfo.email) {
+                    whoAreYou(userInfo)
+                }
             } else {
                 // No user is signed in.
             }
         });
-    },[])
+    }, [])
 
 
 
@@ -63,10 +71,10 @@ function App() {
 
                         <Route exact path="/"> <LandingPage /> </Route>
 
-                        <Route path="/login"> <Login /> </Route>
+                        <Route path="/login"><Login /></Route>
                         <Route path="/logout"> <LogOut /> </Route>
 
-                        <Route path="/admin"> <SecuredForAdminPage/> </Route>
+                        <Route path="/admin"> <SecuredForAdminPage /> </Route>
 
                         <UserPrivateRoute path="/user/:service_name"> <UserPanelLayOut /> </UserPrivateRoute>
                         <UserPrivateRoute path="/user"> <UserPanelLayOut /> </UserPrivateRoute>

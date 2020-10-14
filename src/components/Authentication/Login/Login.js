@@ -13,6 +13,9 @@ const Login = () => {
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } }
 
+    if(loggedInUser.email !== ''){
+        history.replace(from)
+    }
 
     const whoAreYou=(res)=>{
         fetch(`http://localhost:3001/checkingWhoYouAre` , {
@@ -29,7 +32,6 @@ const Login = () => {
                 }else{
                     res.access = 'user'
                 }
-                console.log(res)
                 setLoggedInUser(res)
             })
     }
@@ -45,7 +47,9 @@ const Login = () => {
                 res && handleResponse(res, true);
             })
     }
+    
     return (
+    
         <div>
             <div className="login d-flex justify-content-center">
                 <div className="row">

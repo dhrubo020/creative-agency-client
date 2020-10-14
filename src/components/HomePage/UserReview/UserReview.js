@@ -11,7 +11,6 @@ const UserReview = () => {
             .then(res => res.json())
             .then(data => {
                 setReviews(data.slice(0,6)) // 6 reviews are display in hompage
-                console.log(data)
             })
     },[])
     return (

@@ -7,10 +7,10 @@ import AdminPanelLayOut from './AdminPanelLayOut';
 const SecuredForAdminPage = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext); //------- global logged in user
     const history = useHistory();
-
+    
     useEffect(()=>{
         if(loggedInUser.access !== 'admin'){
-            alert("Admin authorization failed!")
+            alert('Authorization failed! Admin dashboard is highly secured. Please click "Admin Panel" button from navigation bar. ')
             history.replace('/')
         }
     },[])

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
+import AvailableServices from './AvailableServices';
 
 
 const AddService = () => {
@@ -66,13 +67,13 @@ const AddService = () => {
 
 
     return (
-        <div className="bg-light p-4 my-3">
+        <div className="p-4 my-3" style={{backgroundColor: '#f4f7fc'}}>
             <p className="h4  mt-4">Add New service</p>
             <div className="">
                 <form onSubmit={handleFormSubmit}>
                     <div className="container fluid">
                         <div className="row">
-                            <div className="col-md-6 col-6">
+                            <div className="col-md-6 col-lg-6 col-sm-12">
                                 <label>Service Title</label>
                                 <input onBlur={handleOnBlur} name="title" type="text" className="form-control" required />
                                 <br />
@@ -80,9 +81,10 @@ const AddService = () => {
                                 <label >Description</label>
                                 <textarea onBlur={handleOnBlur} name="description" type="text" className="form-control" rows="3" required />
                             </div>
-                            <div className="col-md-6 col-6">
-                                <div className="ml-5" >
-                                    <label >Upload Service Banner Image : </label>
+                            <div className="col-md-6 col-lg-6 col-sm-12">
+                                <br/><br/>
+                                <div className="ml-md-5 mt-1" >
+                                    <label >Upload Service Image : </label>
                                     <br />
                                     {
                                         serviceInfo.imageUrl ? <img src={serviceInfo.imageUrl} height="60" alt="" /> : <small className="text-mute">Image will be appeared here</small>
@@ -100,6 +102,12 @@ const AddService = () => {
                     </div>
                 </form>
             </div>
+
+
+            {/* available service list */}
+                                 
+            <AvailableServices/>                            
+
         </div>
     );
 };

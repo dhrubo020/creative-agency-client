@@ -9,7 +9,6 @@ const ProvidedServices = () => {
             .then(res => res.json())
             .then(data => {
                 setServices(data)
-                console.log(data)
             })
     }, [])
 
@@ -19,15 +18,18 @@ const ProvidedServices = () => {
             <div className="my-5">
                 <h3 className="text-center"><strong>Provide Awesome <span style={{ color: '#7AB259' }}>Services</span></strong></h3>
             </div>
-            <div className="card-columns">
-                {
-                    services.length > 0
-                        ?
-                        services.map((each, index) => <ProvidedServicesList key={index} data={each} />)
-                        :
-                        <h4 className="text-center"> Loading... </h4>
-                }
+            <div className="provided-service-scroll-area pr-4">
+                <div className="card-columns">
+                    {
+                        services.length > 0
+                            ?
+                            services.map((each, index) => <ProvidedServicesList key={index} data={each} />)
+                            :
+                            <h4 className="text-center"> Loading... </h4>
+                    }
+                </div>
             </div>
+
         </div>
 
 

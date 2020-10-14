@@ -55,7 +55,7 @@ const Works = () => {
             <Slider className="mx-2" {...settings}>
 
                 {
-                    images.map(each => <img src={each} className="p-2 mx-2" alt=""/> )
+                    images.map((each , index) => <img src={each} key={index} className="p-2 mx-2" alt=""/> )
                 }
                 
             </Slider>

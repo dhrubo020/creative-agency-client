@@ -7,49 +7,49 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light pt-2 font-weight-bold">
-                <Link class="navbar-brand" to="/">
+            <nav className="navbar navbar-expand-lg navbar-expand-md navbar-light pt-2 font-weight-bold">
+                <Link className="navbar-brand" to="/">
                     <img src={logo} height="70" alt="" />
                 </Link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item ">
-                            <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto mt-2">
+                        <li className="nav-item ">
+                            <Link className="nav-link nav-btn" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="#">Our Portfolio</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="#">Our Portfolio</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="#">Our Team</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="#">Our Team</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="#">Contact Us</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="#">Contact Us</Link>
                         </li>
                         {
                             loggedInUser.email
                                 ?
                                 <>
-                                    <li class="nav-item d-flex">
-                                        <Link class="nav-link " to="/user"> {loggedInUser.displayName} </Link>
+                                    <li className="nav-item d-flex">
+                                        <Link className="nav-link " to="/user"> {loggedInUser.displayName} </Link>
                                     </li>
                                     {
                                         loggedInUser.access === 'admin'
                                         &&
-                                        <li class="nav-item d-flex">
-                                            <Link class="nav-link " to="/admin"> Admin Panel </Link>
+                                        <li className="nav-item d-flex">
+                                            <Link className="nav-link " to="/admin"> Admin Panel </Link>
                                         </li>
                                     }
-                                    <li class="nav-item">
-                                        <Link class="nav-link " to="/logout">Log Out</Link>
+                                    <li className="nav-item">
+                                        <Link className="nav-link " to="/logout">Log Out</Link>
                                     </li>
                                 </>
                                 :
-                                <li class="nav-item">
-                                    <Link class="nav-link" to="/login">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login">
                                         <button className="brand-dark-btn mt-n2">Log In</button>
                                     </Link>
                                 </li>
